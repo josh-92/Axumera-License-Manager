@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Axumera License Manager</title>
+  <script>
+    try {
+      if (localStorage.getItem('ax.collapsed') === '1') {
+        document.documentElement.classList.add('collapsed');
+      }
+    } catch (e) { /* storage unavailable: keep expanded */ }
+  </script>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body class="shell">
+  <aside class="sidebar" aria-label="Navigation">
+    <div class="sidebar-main">
+      <div class="brand">
+        <img class="brand-logo" src="/logo_white.png" alt="Axumera" title="Axumera" />
+        <span class="brand-sub">License Manager</span>
+      </div>
+      <nav class="nav" id="nav" aria-label="Main menu"></nav>
+      <div class="sidebar-footer" id="sidebarFooter"></div>
+    </div>
+    <div class="sidebar-rail">
+      <button class="sidebar-toggle" id="sidebarToggle" type="button" title="Collapse sidebar" aria-label="Toggle sidebar">
+        <span id="toggleGlyph">&#9664;</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="viewport">
+    <section class="page" id="page" aria-live="polite"></section>
+  </main>
+
+  <div class="modal-root" id="modalRoot" hidden></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

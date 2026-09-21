@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>Axumera.LicenseManager</RootNamespace>
+    <AssemblyName>Axumera.LicenseManager</AssemblyName>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Axumera.LicenseManager.Core\Axumera.LicenseManager.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- WebView2 ships WinForms + WPF managed wrappers in its build targets. We
+         use only the WinForms control, so ExcludeAssets here + the two explicit
+         references below avoid pulling in the unused WPF assembly (and the
+         WindowsBase unification noise it causes). The native loader DLLs are
+         copied from the package's runtimes folders explicitly. -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4129.50" ExcludeAssets="build;buildTransitive" />
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\lib_manual\netcoreapp3.0\Microsoft.Web.WebView2.Core.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms">
+      <HintPath>$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\lib_manual\netcoreapp3.0\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Content Include="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\runtimes\win-x64\native\WebView2Loader.dll">
+      <Link>runtimes\win-x64\native\WebView2Loader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PublishState>Included</PublishState>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\runtimes\win-x86\native\WebView2Loader.dll">
+      <Link>runtimes\win-x86\native\WebView2Loader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PublishState>Included</PublishState>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\runtimes\win-arm64\native\WebView2Loader.dll">
+      <Link>runtimes\win-arm64\native\WebView2Loader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PublishState>Included</PublishState>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\app.ico" />
+    <EmbeddedResource Include="Resources\logo.png" />
+    <EmbeddedResource Include="Resources\logo_white.png" />
+    <EmbeddedResource Include="Ui\Web\wwwroot\index.html" />
+    <EmbeddedResource Include="Ui\Web\wwwroot\app.css" />
+    <EmbeddedResource Include="Ui\Web\wwwroot\app.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Axumera.LicenseManager.Core.Tests" />
+  </ItemGroup>
+</Project>

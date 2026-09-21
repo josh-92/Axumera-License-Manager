@@ -1,0 +1,42 @@
+# Secrets — the live signing key must NEVER be committed or copied into outputs.
+*.pem
+*.key
+*.pfx
+*.p12
+*.der
+
+# License files / local certificate records
+*.lic
+licenses.json
+
+# Local user/account state (created on the operator's machine at first run)
+accounts.json
+settings.json
+
+# Build outputs
+bin/
+obj/
+build/
+publish/
+out/
+*.user
+*.suo
+
+# IDE / editor state
+.vs/
+.vscode/
+.idea/
+
+# WebView2 runtime cache created by local runs/tests (EBWebView profiles)
+*.WebView2/
+EBWebView/
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs & scratch
+*.log
+logs/
+scratch/

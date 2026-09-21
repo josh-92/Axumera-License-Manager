@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Axumera.LicenseManager.Core/Axumera.LicenseManager.Core.csproj" />
+    <Project Path="src/Axumera.LicenseManager/Axumera.LicenseManager.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Axumera.LicenseManager.Core.Tests/Axumera.LicenseManager.Core.Tests.csproj" />
+  </Folder>
+</Solution>

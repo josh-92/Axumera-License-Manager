@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Axumera.LicenseManager.Core.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The app project references WebView2 with build assets excluded and plain
+         References, which do not flow to this project. The layout tests drive a
+         real in-process WebView2, so the Core wrapper + the native loader DLL
+         must be present in the vstest output too. -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4129.50" ExcludeAssets="build;buildTransitive" />
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\lib_manual\netcoreapp3.0\Microsoft.Web.WebView2.Core.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Content Include="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\runtimes\win-x64\native\WebView2Loader.dll">
+      <Link>runtimes\win-x64\native\WebView2Loader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)microsoft.web.webview2\1.0.4129.50\runtimes\win-x64\native\WebView2Loader.dll">
+      <Link>WebView2Loader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Axumera.LicenseManager.Core\Axumera.LicenseManager.Core.csproj" />
+    <ProjectReference Include="..\..\src\Axumera.LicenseManager\Axumera.LicenseManager.csproj" />
+  </ItemGroup>
+</Project>
