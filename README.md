@@ -117,11 +117,7 @@ tests/
 - The bundled public key is the production Axumera Exam Suite key and is used
   only for verification; it is public by design.
 
-## Disclaimer
 
-This repository contains **no cryptographic private material** and **no license
-payloads**. Production signing requires the operator's own `private_key.pem`,
-which must remain outside this repository.
 
 ---
 
